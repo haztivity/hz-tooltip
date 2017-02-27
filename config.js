@@ -17,6 +17,7 @@ System.config({
     "json": "github:systemjs/plugin-json@0.2.3",
     "slick-carousel": "npm:slick-carousel@1.6.0",
     "text": "github:systemjs/plugin-text@0.0.9",
+    "tooltipster": "npm:tooltipster@4.1.8",
     "typescript": "npm:typescript@2.1.5",
     "velocity-animate": "npm:velocity-animate@1.4.2",
     "bitbucket:davinchi_finsi/core@0.3.0": {
@@ -337,6 +338,10 @@ System.config({
     },
     "npm:timers-browserify@1.4.2": {
       "process": "npm:process@0.11.9"
+    },
+    "npm:tooltipster@4.1.8": {
+      "jquery": "npm:jquery@3.1.1",
+      "process": "github:jspm/nodelibs-process@0.1.2"
     },
     "npm:typescript@2.1.5": {
       "crypto": "github:jspm/nodelibs-crypto@0.1.0",

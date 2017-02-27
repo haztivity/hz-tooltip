@@ -4,19 +4,23 @@
         if (v !== undefined) module.exports = v;
     }
     else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "@haztivity/core/index", "./page.html!text"], factory);
+        define(["require", "exports", "@haztivity/core/index", "./page.html!text", "../../../../../src/HzTooltip"], factory);
     }
 })(function (require, exports) {
     "use strict";
+    Object.defineProperty(exports, "__esModule", { value: true });
     /**
      * @license
      * Copyright Davinchi. All Rights Reserved.
      */
     var index_1 = require("@haztivity/core/index");
     var template = require("./page.html!text");
+    var HzTooltip_1 = require("../../../../../src/HzTooltip");
     exports.page = index_1.PageFactory.createPage({
         name: "6611",
-        resources: [],
+        resources: [
+            HzTooltip_1.HzTooltipResource
+        ],
         template: template
     });
     exports.page.on(index_1.PageController.ON_RENDERING, null, function (eventObject, template, pageController) {

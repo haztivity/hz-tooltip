@@ -1,2 +1,9 @@
 div
-    h1 Page
+    h1 HzTooltip
+    h2 Simple use
+    a(data-hz-resource="HzTooltip" title="Tooltip content!") Simple use
+    h3 HTML Content
+    a(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content") HTML Content
+    div.tooltip-template
+        p#tooltip-content
+            img(src="./pages/6611/assets/images/rocket.png")

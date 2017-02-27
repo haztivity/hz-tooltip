@@ -4,10 +4,12 @@
  */
 import {PageFactory, PageRegister, PageController} from "@haztivity/core/index";
 import * as template from "./page.html!text";
+import {HzTooltipResource} from "../../../../../src/HzTooltip";
 export let page: PageRegister = PageFactory.createPage(
     {
         name: "6611",
         resources: [
+            HzTooltipResource
         ],
         template: template
     }
