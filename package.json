@@ -1,6 +1,6 @@
 {
   "name": "@haztivity/hztooltip",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Recurso de Tooltip",
   "main": "index.js",
   "module": "index.js",
