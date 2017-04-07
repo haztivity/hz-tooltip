@@ -1,6 +1,6 @@
 {
   "name": "@haztivity/hztooltip",
-  "version": "0.3.1",
+  "version": "0.5.0",
   "description": "Recurso de Tooltip",
   "main": "index.js",
   "module": "index.js",
@@ -61,15 +61,15 @@
       "lib": "src"
     },
     "dependencies": {
-      "@haztivity/core": "bitbucket:davinchi_finsi/core@^0.3.0",
-      "jquery": "npm:jquery@^3.1.1",
-      "tooltipster": "npm:tooltipster@^4.1.8"
+      "@haztivity/core": "bitbucket:davinchi_finsi/core@^0.5",
+      "jquery": "npm:jquery@^3",
+      "tooltipster": "npm:tooltipster@^4"
     },
     "devDependencies": {
-      "css": "github:systemjs/plugin-css@^0.1.32",
-      "json": "github:systemjs/plugin-json@^0.2.3",
-      "text": "github:systemjs/plugin-text@^0.0.9",
-      "typescript": "npm:typescript@^2.1.5"
+      "css": "github:systemjs/plugin-css@^0",
+      "json": "github:systemjs/plugin-json@^0",
+      "text": "github:systemjs/plugin-text@^0",
+      "typescript": "npm:typescript@^2"
     }
   }
 }

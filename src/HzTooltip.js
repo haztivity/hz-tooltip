@@ -1,19 +1,10 @@
-(function (factory) {
-    if (typeof module === "object" && typeof module.exports === "object") {
-        var v = factory(require, exports);
-        if (v !== undefined) module.exports = v;
-    }
-    else if (typeof define === "function" && define.amd) {
-        define(["require", "exports", "./HzTooltipResource"], factory);
-    }
-})(function (require, exports) {
-    "use strict";
-    Object.defineProperty(exports, "__esModule", { value: true });
-    /**
-     * @license
-     * Copyright Davinchi. All Rights Reserved.
-     */
-    var HzTooltipResource_1 = require("./HzTooltipResource");
-    exports.HzTooltipResource = HzTooltipResource_1.HzTooltipResource;
-});
-//# sourceMappingURL=HzTooltip.js.map
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+/**
+ * @license
+ * Copyright Davinchi. All Rights Reserved.
+ */
+var HzTooltipResource_1 = require("./HzTooltipResource");
+exports.HzTooltipResource = HzTooltipResource_1.HzTooltipResource;
+
+//# sourceMappingURL=data:application/json;charset=utf8;base64,eyJ2ZXJzaW9uIjozLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiIiwic291cmNlcyI6WyJIelRvb2x0aXAuanMiXSwic291cmNlc0NvbnRlbnQiOlsiXCJ1c2Ugc3RyaWN0XCI7XG5PYmplY3QuZGVmaW5lUHJvcGVydHkoZXhwb3J0cywgXCJfX2VzTW9kdWxlXCIsIHsgdmFsdWU6IHRydWUgfSk7XG4vKipcbiAqIEBsaWNlbnNlXG4gKiBDb3B5cmlnaHQgRGF2aW5jaGkuIEFsbCBSaWdodHMgUmVzZXJ2ZWQuXG4gKi9cbnZhciBIelRvb2x0aXBSZXNvdXJjZV8xID0gcmVxdWlyZShcIi4vSHpUb29sdGlwUmVzb3VyY2VcIik7XG5leHBvcnRzLkh6VG9vbHRpcFJlc291cmNlID0gSHpUb29sdGlwUmVzb3VyY2VfMS5IelRvb2x0aXBSZXNvdXJjZTtcbiJdLCJmaWxlIjoiSHpUb29sdGlwLmpzIn0=
