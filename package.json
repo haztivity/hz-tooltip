@@ -1,6 +1,6 @@
 {
-  "name": "@haztivity/hztooltip",
-  "version": "0.5.0",
+  "name": "@haztivity/hz-tooltip",
+  "version": "0.6.0",
   "description": "Recurso de Tooltip",
   "main": "index.js",
   "module": "index.js",
@@ -13,6 +13,9 @@
   },
   "directories": {
     "typings": "src"
+  },
+  "publishConfig": {
+    "access":"public"
   },
   "types": "index.ts",
   "typings": "index.ts",
