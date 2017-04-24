@@ -6,8 +6,8 @@ import {ScoFactory, Sco, ISco} from "@haztivity/core";
 import {page as page6611} from "./pages/6611/page";
 import {HzNavbarComponent} from "@haztivity/hz-navbar";
 import template from "./sco.pug";
-import * as css from "./main.scss";
-css!
+import "./main.scss";
+import "./markdown.scss";
 let sco: ISco = ScoFactory.createSco(
     {
         name: "1221",

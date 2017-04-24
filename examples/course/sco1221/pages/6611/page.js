@@ -12,13 +12,17 @@ exports.page = core_1.PageFactory.createPage({
     resources: [
         HzTooltip_1.HzTooltipResource
     ],
-    template: page_pug_1.default
+    template: page_pug_1.default,
+    autoSequence: false
 });
 exports.page.on(core_1.PageController.ON_RENDERING, null, function (eventObject, template, pageController) {
     console.log(pageController.options.name + " rendering");
 });
 exports.page.on(core_1.PageController.ON_RENDERED, null, function (eventObject, $page, pageController) {
     console.log(pageController.options.name + " rendered");
+    $page.find('pre code').each(function (i, block) {
+        hljs.highlightBlock(block);
+    });
 });
 exports.page.on(core_1.PageController.ON_SHOW, null, function (eventObject, $page, $oldPage, oldPageRelativePosition, pageController) {
     console.log(pageController.options.name + " show start");

@@ -8,8 +8,8 @@ var core_1 = require("@haztivity/core");
 var page_1 = require("./pages/6611/page");
 var hz_navbar_1 = require("@haztivity/hz-navbar");
 var sco_pug_1 = require("./sco.pug");
-var css = require("./main.scss");
-css;
+require("./main.scss");
+require("./markdown.scss");
 var sco = core_1.ScoFactory.createSco({
     name: "1221",
     template: sco_pug_1.default,

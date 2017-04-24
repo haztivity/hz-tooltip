@@ -1,8 +1,62 @@
 div
-    p
-        a(data-hz-resource="HzTooltip" title="Tooltip content!") Simple use
-    p
-        a(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content") HTML Content
+    div.markdown-wrapper
+        :markdown-it(linkify)
+            ## Simple use
+            hz-tooltip allows to create tooltip as resources with all the advantages of a haztivity resource.
+            hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
+            ### Usage
+            1. Set data-hz-resource to the trigger element (the element that has the tooltip)
+            2. Set the title attribute with the text for the tooltip
+
+            ```html
+            <button data-hz-resource="HzTooltip" title="Tooltip content!"> Hover me! </button>
+            ```
+        button(data-hz-resource="HzTooltip" title="Tooltip content!") Hover me!
+
+        :markdown-it(linkify)
+            ### Template
+            For more complex tooltips tooltipster allow to include html in the tooltip using templates.
+
+            ```html
+            <button data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content"> HTML Content </button>
+            <div class=".tooltip-template">
+                <p id="tooltip-content">
+                    <img src="./pages/6611/assets/images/rocket.png"/>
+                </p>
+            </div>
+            ```
+
+            For more info see [the doc](https://iamceege.github.io/tooltipster/#html)
+
+        button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content") HTML Content
         div.tooltip-template
             p#tooltip-content
                 img(src="./pages/6611/assets/images/rocket.png")
+        :markdown-it(linkify)
+            ### Options
+            All the options of tooltipster excepts functions could be specified by attributes using:
+
+            ```html
+                data-opt-hz-tooltip-[option]=[value]
+            ```
+            If the option have multiple words, use dashes, for example animationDuration will be animation-duration
+
+            Examples:
+            ```html
+                <!-- Delay option -->
+                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-delay="2000"> Delay 2s </button>
+
+                <!-- Trigger option -->
+                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-trigger="click"> Click me! </button>
+
+                <!-- Multiple options -->
+                <button data-hz-resource="HzTooltip"
+                        title="Tooltip content!"
+                        data-opt-hz-tooltip-animation-duration="1000"
+                        data-opt-hz-tooltip-animation="slide">
+                    Multiple options
+                </button>
+            ```
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-delay="2000") Delay 2s
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-trigger="click") Click me!
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-animation-duration="1000" data-opt-hz-tooltip-animation="slide") Multiple options
