@@ -1,0 +1,115 @@
+//********************************************
+//* Project: hztooltip
+//* File: _hz-tooltip.thememaker
+//* Description:
+//*********************************************
+
+@mixin hz-tooltip__theme-maker(
+    $theme-name:"default",
+    $arrow-height:0.5em,
+    $arrow-width:1em,
+    $BC-box:rgba(0,0,0,0.6),
+    $BC-arrow:rgba(0,0,0,0.6),
+    $TC-box:#fff
+){
+    .tooltipster-#{$theme-name}{
+        &.tooltipster-sidetip{
+            .tooltipster-box{
+                color:#fff;
+                background-color: $BC-box;
+            }
+
+            .tooltipster-arrow {
+                height: $arrow-height;
+                margin-left: -($arrow-width/2);
+                width: $arrow-width;
+            }
+            .tooltipster-arrow-background {
+                border: $arrow-width/2 solid transparent;
+            }
+            &.tooltipster-bottom{
+                .tooltipster-box{
+                    margin-top:$arrow-height
+                }
+                .tooltipster-arrow-uncropped {
+                    top: $arrow-height;
+                }
+                .tooltipster-arrow {
+                    height: $arrow-height;
+                    margin-left: -($arrow-width/2);
+                    top: 0;
+                    width: $arrow-width;
+                }
+                .tooltipster-arrow-background {
+                    border-bottom-color: $BC-arrow;
+                    left: 0;
+                    bottom: 0;
+                }
+            }
+            &.tooltipster-top{
+                .tooltipster-box{
+                    margin-bottom:$arrow-height
+                }
+                .tooltipster-arrow {
+                    height: $arrow-height;
+                    margin-left: -($arrow-width/2);
+                    bottom: 0;
+                    width: $arrow-width;
+                }
+                .tooltipster-arrow-background {
+                    border-top-color: $BC-arrow;
+                    left: 0;
+                    top: 0;
+                }
+
+            }
+            &.tooltipster-left{
+                .tooltipster-box {
+                    margin-right: $arrow-width/2;
+                }
+                .tooltipster-arrow {
+                    height: $arrow-width;
+                    right: 0;
+                    top: 0;
+                    width: $arrow-height;
+                }
+                .tooltipster-arrow-background {
+                    border-left-color: $BC-arrow;
+                    border-right: none;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            &.tooltipster-right{
+                .tooltipster-box {
+                    margin-left: $arrow-height;
+                }
+                .tooltipster-arrow-uncropped{
+                    left:-$arrow-height
+                }
+                .tooltipster-arrow {
+                    height: $arrow-width;
+                    left: 0;
+                    top: 0;
+                    width: $arrow-height;
+                }
+                .tooltipster-arrow-background {
+                    border-right-color: $BC-arrow;
+                    border-left: none;
+                    right: 0;
+                    top: 0;
+                }
+            }
+            &.tooltipster-left,
+            &.tooltipster-right{
+                .tooltipster-arrow{
+                    height: $arrow-width;
+                    margin-left: 0;
+                    margin-top:-($arrow-width/2);
+                    width: $arrow-height;
+                }
+            }
+            .tooltipster-arrow-border{}
+        }
+    }
+}

@@ -1,0 +1,10 @@
+//********************************************
+//* Project: hztooltip
+//* File: hz-tooltipt-default
+//* Description:
+//*********************************************
+/* hz-tooltipt-default */
+@import "../hz-tooltip.structure";
+@import "../hz-tooltip.theme";
+@include hz-tooltip__theme-maker();
+/* End hz-tooltipt-default */
