@@ -6,21 +6,28 @@
  * @license
  * Copyright Davinchi. All Rights Reserved.
  */
-import {Resource,ResourceController,$,EventEmitterFactory} from "@haztivity/core";
+import {Resource,ResourceController,$,EventEmitterFactory,DataOptions} from "@haztivity/core";
 import "tooltipster";
 @Resource(
     {
         name:"HzTooltip",
         dependencies:[
             $,
-            EventEmitterFactory
+            EventEmitterFactory,
+            DataOptions
         ]
     }
 )
 export class HzTooltipResource extends ResourceController {
+    protected static readonly DEFAULTS = {
+        theme:"tooltipster-default"
+    };
     public static readonly NAMESPACE = "hzTooltip";
+    protected _DataOptions:DataOptions;
     protected _tooltipInstance:any;
     protected _isOpen:boolean=false;
+    protected _id;
+    protected _namespace;
     public static readonly STATES = {
         appearing:'appearing',
         stable:'stable',
@@ -33,20 +40,29 @@ export class HzTooltipResource extends ResourceController {
      * @param _EventEmitterFactory
      * @param _ScormService
      */
-    constructor(_$: JQueryStatic, _EventEmitterFactory) {
+    constructor(_$: JQueryStatic, _EventEmitterFactory, _DataOptions) {
         super(_$, _EventEmitterFactory);
+        this._DataOptions = _DataOptions;
     }
 
     init(options, config?) {
-        this._options = options;
         this._config = config;
-        if(!this._options.theme){
-            this._options.theme = "tooltipster-default";
-        }
-        this._$element.tooltipster(options);
-        let tooltips = this._$element.data("tooltipsterNs");
-        this._tooltipInstance = this._$element.data(tooltips[0]);
+        this._id = new Date().getTime();
+        this._namespace = HzTooltipResource.NAMESPACE + this._id;
+        this._options = options;
+        this.refresh();
+    }
+    public refresh(){
+        if(this._tooltipInstance){
+            this._tooltipInstance.destroy();        }
+        let tooltipsterOptions = this._DataOptions.getDataOptions(this._$element, "tooltipster");
+        this._options.tooltipster = this._$.extend(true,{},HzTooltipResource.DEFAULTS, tooltipsterOptions);
+        this._options.tooltipster.functionInit = this._onTooltipsterInit.bind(this);
+        this._$element.tooltipster(this._options.tooltipster);
         this._assignEvents();
+    }
+    protected _onTooltipsterInit(instance){
+        this._tooltipInstance = instance;
     }
     public getInstance(): any {
         return this._tooltipInstance;
@@ -65,24 +81,25 @@ export class HzTooltipResource extends ResourceController {
         return this._isOpen;
     }
     protected _assignEvents(){
-        this._tooltipInstance.off(HzTooltipResource.NAMESPACE).on( `state.${HzTooltipResource.NAMESPACE}`,{instance:this},this._onStateChange);
+        this._tooltipInstance.off(HzTooltipResource.NAMESPACE).on(`state.${this._namespace}`,this._onStateChange.bind(this));
     }
     protected _onStateChange(e){
-        let instance = e.data.instance;
         switch(e.state){
             case HzTooltipResource.STATES.stable:
-                instance._isOpen = true;
+                this._isOpen = true;
                 break;
             case HzTooltipResource.STATES.disappearing:
-                if(instance.isOpen()){
-                    instance._markAsCompleted();
+                if(this.isOpen()){
+                    this._markAsCompleted();
                 }
-                instance._isOpen=false;
+                this._isOpen=false;
                 break;
         }
     }
     public destroy(){
-        this._tooltipInstance.destroy();
+        if(this._tooltipInstance) {
+            this._tooltipInstance.destroy();
+        }
         super.destroy();
     }
 }

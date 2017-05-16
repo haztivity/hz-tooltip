@@ -34,21 +34,31 @@ var HzTooltipResource = HzTooltipResource_1 = (function (_super) {
      * @param _EventEmitterFactory
      * @param _ScormService
      */
-    function HzTooltipResource(_$, _EventEmitterFactory) {
+    function HzTooltipResource(_$, _EventEmitterFactory, _DataOptions) {
         var _this = _super.call(this, _$, _EventEmitterFactory) || this;
         _this._isOpen = false;
+        _this._DataOptions = _DataOptions;
         return _this;
     }
     HzTooltipResource.prototype.init = function (options, config) {
-        this._options = options;
         this._config = config;
-        if (!this._options.theme) {
-            this._options.theme = "tooltipster-default";
+        this._id = new Date().getTime();
+        this._namespace = HzTooltipResource_1.NAMESPACE + this._id;
+        this._options = options;
+        this.refresh();
+    };
+    HzTooltipResource.prototype.refresh = function () {
+        if (this._tooltipInstance) {
+            this._tooltipInstance.destroy();
         }
-        this._$element.tooltipster(options);
-        var tooltips = this._$element.data("tooltipsterNs");
-        this._tooltipInstance = this._$element.data(tooltips[0]);
+        var tooltipsterOptions = this._DataOptions.getDataOptions(this._$element, "tooltipster");
+        this._options.tooltipster = this._$.extend(true, {}, HzTooltipResource_1.DEFAULTS, tooltipsterOptions);
+        this._options.tooltipster.functionInit = this._onTooltipsterInit.bind(this);
+        this._$element.tooltipster(this._options.tooltipster);
         this._assignEvents();
+    };
+    HzTooltipResource.prototype._onTooltipsterInit = function (instance) {
+        this._tooltipInstance = instance;
     };
     HzTooltipResource.prototype.getInstance = function () {
         return this._tooltipInstance;
@@ -67,28 +77,32 @@ var HzTooltipResource = HzTooltipResource_1 = (function (_super) {
         return this._isOpen;
     };
     HzTooltipResource.prototype._assignEvents = function () {
-        this._tooltipInstance.off(HzTooltipResource_1.NAMESPACE).on("state." + HzTooltipResource_1.NAMESPACE, { instance: this }, this._onStateChange);
+        this._tooltipInstance.off(HzTooltipResource_1.NAMESPACE).on("state." + this._namespace, this._onStateChange.bind(this));
     };
     HzTooltipResource.prototype._onStateChange = function (e) {
-        var instance = e.data.instance;
         switch (e.state) {
             case HzTooltipResource_1.STATES.stable:
-                instance._isOpen = true;
+                this._isOpen = true;
                 break;
             case HzTooltipResource_1.STATES.disappearing:
-                if (instance.isOpen()) {
-                    instance._markAsCompleted();
+                if (this.isOpen()) {
+                    this._markAsCompleted();
                 }
-                instance._isOpen = false;
+                this._isOpen = false;
                 break;
         }
     };
     HzTooltipResource.prototype.destroy = function () {
-        this._tooltipInstance.destroy();
+        if (this._tooltipInstance) {
+            this._tooltipInstance.destroy();
+        }
         _super.prototype.destroy.call(this);
     };
     return HzTooltipResource;
 }(core_1.ResourceController));
+HzTooltipResource.DEFAULTS = {
+    theme: "tooltipster-default"
+};
 HzTooltipResource.NAMESPACE = "hzTooltip";
 HzTooltipResource.STATES = {
     appearing: 'appearing',
@@ -101,9 +115,11 @@ HzTooltipResource = HzTooltipResource_1 = __decorate([
         name: "HzTooltip",
         dependencies: [
             core_1.$,
-            core_1.EventEmitterFactory
+            core_1.EventEmitterFactory,
+            core_1.DataOptions
         ]
     })
 ], HzTooltipResource);
 exports.HzTooltipResource = HzTooltipResource;
 var HzTooltipResource_1;
+//# sourceMappingURL=HzTooltipResource.js.map

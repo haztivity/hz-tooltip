@@ -16,4 +16,9 @@ body {
 .tooltip-template{
     display: none;
 }
+.tooltipster-box{
+    .tooltip-template{
+        display: initial;
+    }
+}
 /* End components */

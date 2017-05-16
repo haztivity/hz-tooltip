@@ -1,47 +1,126 @@
 div
     div.markdown-wrapper
         :markdown-it(linkify)
-            ## Simple use
-            hz-tooltip allows to create tooltip as resources with all the advantages of an haztivity resource.
-            hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
-            ### Usage
-            1. Set data-hz-resource to the trigger element (the element that has the tooltip)
-            2. Set the title attribute with the text for the tooltip
+            # tooltipster
+            tooltipster is an haztivity to create tooltip resources.\
+            tooltipster uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
 
+            ## Dependencies
+            - JQuery
+            - velocity.js
+            - tooltipster
+
+            ## Simple use
+            1. Import @haztivity/tooltipster
+            2. Add HzTooltipResource to the page
+            3. Set data-hz-resource to the trigger element (the element that has the tooltip)
+            4. Set the title attribute with the text for the tooltip
+
+            ### Ts
+            ```typescript
+            import {PageFactory, Page, PageController, PageRegister} from "@haztivity/core";
+            import template from "./page.pug";
+            import {HzAnimResource} from "@haztivity/tooltipster";
+            export let page: PageRegister = PageFactory.createPage(
+                {
+                    name: "myPage",
+                    resources: [
+                        HzTooltipResource
+                    ],
+                    template: template
+                }
+            );
+            ```
+            ### Pug
+            ```jade
+            button(data-hz-resource="HzTooltip" title="Tooltip content!") Hover me!
+            ```
+            or
+            ### HTML
             ```html
-            <button data-hz-resource="HzTooltip" title="Tooltip content!"> Hover me! </button>
+            <button data-hz-resource="HzTooltip" title="Tooltip content!">
+                Hover me!
+            </button>
             ```
         button(data-hz-resource="HzTooltip" title="Tooltip content!") Hover me!
 
         :markdown-it(linkify)
-            ### Template
-            For more complex tooltips tooltipster allow to include html in the tooltip using templates.
-
+            ## Use templates
+            For more complex tooltips tooltipster allow to include html in the tooltip using templates.\
+            To specify a template for a tooltip, use the ```data-tooltip-content``` attribute with a valid jquery selector.\
+            For more info visit [tooltipster page](http://iamceege.github.io/tooltipster/#html)
+            ### Pug
+            ```jade
+            button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template") HTML Content
+                div#tooltip-template.tooltip-template
+                    p
+                        img(src="./pages/6611/assets/images/rocket.png")
+            ```
+            ### HTML
             ```html
-            <button data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content"> HTML Content </button>
-            <div class=".tooltip-template">
-                <p id="tooltip-content">
+            <button data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template"> HTML Content </button>
+            <div class="tooltip-template" id="tooltip-template">
+                <p>
                     <img src="./pages/6611/assets/images/rocket.png"/>
                 </p>
             </div>
             ```
+            ### SCSS
+            ```scss
+            //Hide the template where is not inside the tooltip
+            .tooltip-template{
+                display:none;
+            }
+            .tooltipster-box{
+                .tooltip-template{
+                    display: initial;
+                }
+            }
+            ```
+            or
+            ### CSS
+            ```css
+            /*Hide the template where is not inside the tooltip*/
+            .tooltip-template{
+                display:none;
+            }
+            .tooltipster-box .tooltip-template{
+                display: initial;
+            }
+            ```
 
-            For more info see [the doc](https://iamceege.github.io/tooltipster/#html)
-
-        button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-content") HTML Content
-        div.tooltip-template
-            p#tooltip-content
+        button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template") HTML Content
+        div#tooltip-template.tooltip-template
+            p
                 img(src="./pages/6611/assets/images/rocket.png")
         :markdown-it(linkify)
-            ### Options
+            ## Options
             All the options of tooltipster excepts functions could be specified by attributes using:
 
-            ```html
-                data-opt-hz-tooltip-[option]=[value]
+            ```jade
+            data-opt-tooltipster-[option]=[value]
             ```
-            If the option have multiple words, use dashes, for example animationDuration will be animation-duration
+            If the option have multiple words, use dashes, for example ```animationDuration``` will be ```animation-duration```
 
-            Examples:
+            ### Examples
+            #### Pug
+            ```jade
+            // Delay
+            button(data-hz-resource="HzTooltip"
+                    title="Tooltip content!"
+                    data-opt-tooltipster-delay="2000") Delay 2s
+            // Trigger click
+            button(data-hz-resource="HzTooltip"
+                    title="Tooltip content!"
+                    data-opt-tooltipster-trigger="click") Click me!
+            // Multiple options
+            button(data-hz-resource="HzTooltip"
+                    title="Tooltip content!"
+                    data-opt-tooltipster-animation-duration="1000"
+                    data-opt-tooltipster-animation="slide") Multiple options
+            ```
+            or
+            #### HTML
             ```html
                 <!-- Delay option -->
                 <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-delay="2000"> Delay 2s </button>
@@ -58,6 +137,6 @@ div
                 </button>
             ```
             For more info see [tooltipster options](https://iamceege.github.io/tooltipster/#options)
-        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-delay="2000") Delay 2s
-        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-trigger="click") Click me!
-        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-animation-duration="1000" data-opt-hz-tooltip-animation="slide") Multiple options
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-delay="2000") Delay 2s
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-trigger="click") Click me!
+        button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-animation-duration="1000" data-opt-tooltipster-animation="slide") Multiple options
