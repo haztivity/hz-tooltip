@@ -1,5 +1,5 @@
 # hz-tooltip
-hz-tooltip is an haztivity to create tooltip resources.\
+hz-tooltip is an haztivity resource for create tooltips.\
 hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
 
 # Dependencies
