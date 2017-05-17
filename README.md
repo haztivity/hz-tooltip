@@ -40,7 +40,7 @@ or
 </button>
 ```
 ## Use templates
-For more complex tooltips tooltipster allow to include html in the tooltip using templates.\
+For more complex tooltips tooltipster allows to include html in the tooltip using templates.\
 To specify a template for a tooltip, use the ```data-tooltip-content``` attribute with a valid jquery selector.\
 For more info visit [tooltipster page](http://iamceege.github.io/tooltipster/#html)
 ### Pug
