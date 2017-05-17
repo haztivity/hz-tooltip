@@ -1,5 +1,5 @@
 # hz-tooltip
-hz-tooltip is an haztivity resource for create tooltips.\
+hz-tooltip is an haztivity resource to create tooltips.\
 hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
 
 # Dependencies
@@ -17,7 +17,7 @@ hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the 
 ```typescript
 import {PageFactory, Page, PageController, PageRegister} from "@haztivity/core";
 import template from "./page.pug";
-import {HzAnimResource} from "@haztivity/hz-tooltip";
+import {HzTooltipResource} from "@haztivity/hz-tooltip";
 export let page: PageRegister = PageFactory.createPage(
     {
         name: "myPage",
