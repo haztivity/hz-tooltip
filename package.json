@@ -1,11 +1,11 @@
 {
   "name": "@haztivity/hz-tooltip",
-  "version": "0.6.2",
+  "version": "0.6.3",
   "description": "Tooltip resource",
   "main": "dist/HzTooltip.js",
   "module": "dist/HzTooltip.js",
   "scripts": {
-    "build":"tsc -p src",
+    "build": "tsc -p src",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -21,7 +21,7 @@
   "types": "src/HzTooltip.ts",
   "typings": "src/HzTooltip.ts",
   "author": "Davinchi",
-  "license":"MIT",
+  "license": "MIT",
   "homepage": "https://github.com/haztivity/hz-tooltip/",
   "dependencies": {
     "@haztivity/core": "^0.6.5",
