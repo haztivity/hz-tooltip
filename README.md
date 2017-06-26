@@ -1,8 +1,8 @@
 # hz-tooltip
-hz-tooltip is an haztivity to create tooltip resources.\
+hz-tooltip is an haztivity tooltip resource.\
 hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
 
-# Dependencies
+## Dependencies
 - JQuery
 - tooltipster
 - @haztivity/core
@@ -50,6 +50,7 @@ button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template") HT
         p
             img(src="./pages/6611/assets/images/rocket.png")
 ```
+or
 ### HTML
 ```html
 <button data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template"> HTML Content </button>
