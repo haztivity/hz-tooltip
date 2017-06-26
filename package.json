@@ -21,8 +21,8 @@
   "types": "src/HzTooltip.ts",
   "typings": "src/HzTooltip.ts",
   "author": "Davinchi",
-  "license": "ISC",
-  "homepage": "",
+  "license":"MIT",
+  "homepage": "https://github.com/haztivity/hz-tooltip/",
   "dependencies": {
     "@haztivity/core": "^0.6.5",
     "tooltipster": "^4.2.5"
