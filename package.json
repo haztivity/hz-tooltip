@@ -1,6 +1,6 @@
 {
   "name": "@haztivity/hz-tooltip",
-  "version": "0.6.3",
+  "version": "0.7.0",
   "description": "Tooltip resource",
   "main": "dist/HzTooltip.js",
   "module": "dist/HzTooltip.js",
