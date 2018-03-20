@@ -1,6 +1,6 @@
 div
     div.markdown-wrapper
-        :markdown-it(linkify)
+        :markdown-it
             # hz-tooltip
             hz-tooltip is an haztivity tooltip resource.\
             hz-tooltip uses [tooltipster](http://iamceege.github.io/tooltipster/) under the hood.
@@ -32,7 +32,7 @@ div
             );
             ```
             ### Pug
-            ```jade
+            ```pug
             button(data-hz-resource="HzTooltip" title="Tooltip content!") Hover me!
             ```
             or
@@ -44,13 +44,13 @@ div
             ```
         button(data-hz-resource="HzTooltip" title="Tooltip content!") Hover me!
 
-        :markdown-it(linkify)
+        :markdown-it
             ## Use templates
             For more complex tooltips tooltipster allow to include html in the tooltip using templates.\
             To specify a template for a tooltip, use the ```data-tooltip-content``` attribute with a valid jquery selector.\
             For more info visit [tooltipster page](http://iamceege.github.io/tooltipster/#html)
             ### Pug
-            ```jade
+            ```pug
             button(data-hz-resource="HzTooltip" data-tooltip-content="#tooltip-template") HTML Content
                 div#tooltip-template.tooltip-template
                     p
@@ -93,18 +93,18 @@ div
         div#tooltip-template.tooltip-template
             p
                 img(src="./pages/6611/assets/images/rocket.png")
-        :markdown-it(linkify)
+        :markdown-it
             ## Options
             All the options of tooltipster excepts functions could be specified by attributes using:
 
-            ```jade
+            ```pug
             data-opt-tooltipster-[option]=[value]
             ```
             If the option have multiple words, use dashes, for example ```animationDuration``` will be ```animation-duration```
 
             ### Examples
             #### Pug
-            ```jade
+            ```pug
             // Delay
             button(data-hz-resource="HzTooltip"
                     title="Tooltip content!"

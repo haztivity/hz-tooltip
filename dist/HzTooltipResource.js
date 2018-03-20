@@ -26,7 +26,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
  */
 var core_1 = require("@haztivity/core");
 require("tooltipster");
-var HzTooltipResource = HzTooltipResource_1 = (function (_super) {
+var HzTooltipResource = /** @class */ (function (_super) {
     __extends(HzTooltipResource, _super);
     /**
      * Recurso de tooltip para Haztivity.
@@ -40,6 +40,7 @@ var HzTooltipResource = HzTooltipResource_1 = (function (_super) {
         _this._DataOptions = _DataOptions;
         return _this;
     }
+    HzTooltipResource_1 = HzTooltipResource;
     HzTooltipResource.prototype.init = function (options, config) {
         this._config = config;
         this._id = new Date().getTime();
@@ -98,28 +99,28 @@ var HzTooltipResource = HzTooltipResource_1 = (function (_super) {
         }
         _super.prototype.destroy.call(this);
     };
+    HzTooltipResource.DEFAULTS = {
+        theme: "tooltipster-default"
+    };
+    HzTooltipResource.NAMESPACE = "hzTooltip";
+    HzTooltipResource.STATES = {
+        appearing: 'appearing',
+        stable: 'stable',
+        disappearing: 'disappearing',
+        closed: 'closed'
+    };
+    HzTooltipResource = HzTooltipResource_1 = __decorate([
+        core_1.Resource({
+            name: "HzTooltip",
+            dependencies: [
+                core_1.$,
+                core_1.EventEmitterFactory,
+                core_1.DataOptions
+            ]
+        })
+    ], HzTooltipResource);
     return HzTooltipResource;
+    var HzTooltipResource_1;
 }(core_1.ResourceController));
-HzTooltipResource.DEFAULTS = {
-    theme: "tooltipster-default"
-};
-HzTooltipResource.NAMESPACE = "hzTooltip";
-HzTooltipResource.STATES = {
-    appearing: 'appearing',
-    stable: 'stable',
-    disappearing: 'disappearing',
-    closed: 'closed'
-};
-HzTooltipResource = HzTooltipResource_1 = __decorate([
-    core_1.Resource({
-        name: "HzTooltip",
-        dependencies: [
-            core_1.$,
-            core_1.EventEmitterFactory,
-            core_1.DataOptions
-        ]
-    })
-], HzTooltipResource);
 exports.HzTooltipResource = HzTooltipResource;
-var HzTooltipResource_1;
 //# sourceMappingURL=HzTooltipResource.js.map
