@@ -18,7 +18,11 @@ body {
 }
 .tooltipster-box{
     .tooltip-template{
-        display: initial;
+        display: block;
+        img{
+            max-width:none;
+            max-height:none;
+        }
     }
 }
 /* End components */

@@ -87,9 +87,12 @@ export class HzTooltipResource extends ResourceController {
         switch(e.state){
             case HzTooltipResource.STATES.stable:
                 this._isOpen = true;
+                if(this._options.completeOnOpen){
+                    this._markAsCompleted();
+                }
                 break;
             case HzTooltipResource.STATES.disappearing:
-                if(this.isOpen()){
+                if(this.isOpen() && !this._options.completeOnOpen){
                     this._markAsCompleted();
                 }
                 this._isOpen=false;

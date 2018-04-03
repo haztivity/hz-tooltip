@@ -85,7 +85,7 @@ div
                 display:none;
             }
             .tooltipster-box .tooltip-template{
-                display: initial;
+                display: block;
             }
             ```
 
@@ -123,16 +123,16 @@ div
             #### HTML
             ```html
                 <!-- Delay option -->
-                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-delay="2000"> Delay 2s </button>
+                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-delay="2000"> Delay 2s </button>
 
                 <!-- Trigger option -->
-                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-tooltip-trigger="click"> Click me! </button>
+                <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-trigger="click"> Click me! </button>
 
                 <!-- Multiple options -->
                 <button data-hz-resource="HzTooltip"
                         title="Tooltip content!"
-                        data-opt-hz-tooltip-animation-duration="1000"
-                        data-opt-hz-tooltip-animation="slide">
+                        data-opt-tooltipster-duration="1000"
+                        data-opt-tooltipster-animation="slide">
                     Multiple options
                 </button>
             ```
@@ -140,3 +140,22 @@ div
         button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-delay="2000") Delay 2s
         button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-trigger="click") Click me!
         button(data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-tooltipster-animation-duration="1000" data-opt-tooltipster-animation="slide") Multiple options
+        :markdown-it
+            ## Hz Options
+            Specific options in haztivity:
+            - completeOnOpen(default false): If true, the resource will be completed when the tooltip is opened, otherwise, the resource will be complete when the tooltip is closed after been opened
+            ```pug
+               // Delay
+               button(data-hz-resource="HzTooltip"
+                       title="Tooltip content!"
+                       data-opt-hz-tooltip-complete-on-open="true") Completed on open
+            ```
+            or
+            #### HTML
+            ```html
+               <!-- Delay option -->
+               <button data-hz-resource="HzTooltip" title="Tooltip content!" data-opt-hz-complete-on-open="true"> Completed on open </button>
+            ```
+        button(data-hz-resource="HzTooltip"
+            title="Tooltip content!"
+            data-opt-hz-tooltip-complete-on-open="true") Completed on open
